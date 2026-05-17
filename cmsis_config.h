@@ -1,0 +1,13 @@
+#ifndef CMSIS_CONFIG_H
+#define CMSIS_CONFIG_H
+
+#define ARM_MATH_CM33
+#define __FPU_PRESENT 1
+#define ARM_MATH_LOOPUNROLL
+#define ARM_MATH_DSP
+
+#define FFT_SIZE 256
+#define SAMPLE_RATE_HZ 100
+#define FEATURE_UPDATE_RATE_HZ 10
+
+#endif
