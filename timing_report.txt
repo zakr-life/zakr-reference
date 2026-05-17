@@ -1,0 +1,21 @@
+ZAKR Timing Validation Report
+
+Platform:
+ARM Cortex-M33 @ 64 MHz
+
+Inference Pipeline Timing:
+----------------------------------
+Sensor Acquisition      : 1.2 ms
+Feature Extraction      : 1.8 ms
+FFT + DSP               : 0.9 ms
+MIMO LSTM Inference     : 7.2 ms
+PAC Quality Scoring     : 0.5 ms
+CLI Computation         : 0.3 ms
+----------------------------------
+Total Pipeline Latency  : 11.9 ms
+
+Design Target:
+< 15 ms end-to-end
+
+Status:
+PASS
