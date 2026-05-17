@@ -1,0 +1,9 @@
+Total Samples: 100,000
+Sampling Rate: 100 Hz
+Window Size: 1 second
+Feature Vector Dimension: 60
+Dataset Categories:
+- Cognitively Stable
+- Mild Cognitive Impairment
+- Sleep Deprivation
+- Early Neurodegeneration
