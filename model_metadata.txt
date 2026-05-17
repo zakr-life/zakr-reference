@@ -1,0 +1,8 @@
+Model Name: ZAKR MIMO-LSTM INT8
+Framework: TensorFlow Lite Micro
+Quantization: INT8 symmetric
+Input Shape: [1,10,60]
+Output Classes: 4
+Target MCU: ARM Cortex-M33
+Inference Frequency: 10 Hz
+Model Size: 148 KB
