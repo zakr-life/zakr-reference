@@ -1,0 +1,14 @@
+IEC 62304 Software Safety Classification
+
+Subsystem                         Classification
+------------------------------------------------
+Wakeword Detection                Class B
+Inference Engine                  Class B
+Protocol Validation               Class C
+SELVL Numerical Enforcement       Class C
+Audit Logging                     Class A
+Cloud Synchronization             Class A
+Emergency Alert System            Class B
+
+Overall System Classification:
+Class C

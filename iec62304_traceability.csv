@@ -1,0 +1,12 @@
+```csv
+Requirement_ID,Software_Item,Verification_Method,Test_Case,Status
+REQ-001,Wakeword Detection,Unit Test,TC-001,PASS
+REQ-002,PAC Quality Engine,Integration Test,TC-002,PASS
+REQ-003,MIMO LSTM Inference,Benchmark Validation,TC-003,PASS
+REQ-004,SELVL Current Limits,Safety Validation,TC-004,PASS
+REQ-005,Protocol Constraint System,Adversarial Testing,TC-005,PASS
+REQ-006,Audit Logging,System Test,TC-006,PASS
+REQ-007,INT8 Quantization,Latency Benchmark,TC-007,PASS
+REQ-008,Secure Boot Chain,Penetration Test,TC-008,PASS
+REQ-009,Model Integrity Hash,Cryptographic Verification,TC-009,PASS
+REQ-010,Emergency Voice Path,Real-Time Validation,TC-010,PASS
