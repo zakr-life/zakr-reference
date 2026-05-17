@@ -1,0 +1,13 @@
+Flash Usage:
+Model INT8           148 KB
+Firmware             212 KB
+DSP Tables             8 KB
+--------------------------------
+Total                368 KB
+
+RAM Usage:
+Tensor Arena         112 KB
+Feature Buffers       16 KB
+Sensor Buffers        12 KB
+--------------------------------
+Total                140 KB
