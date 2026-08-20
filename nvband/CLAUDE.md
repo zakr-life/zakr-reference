@@ -57,3 +57,22 @@ provisioning, testing/traceability, documentation, open items, working
 method, and definition of done — are reproduced in full in
 `docs/ZAKR_NVBand_ClaudeCode_Master_Build_Prompt.md` and govern every
 directory below. Read that file first.)
+
+---
+
+## Addendum 2 — Voiceprint, Brainprint, Federated Learning, Bounded-Rationale Generation, Sleep-State Reporting
+
+`docs/ADDENDUM_2_biometric_federated_sleep.md` is a second authoritative
+specification, at the same level as the master build prompt above, covering
+five features added after the initial build: EEG-based local authentication
+("brainprint"), microphone-based 1:1 voice verification ("voiceprint," BOM
+addition U21), a constrained bounded-rationale text generator (target ≤0.5%
+ungrounded-claim rate, precisely defined there), a federated-learning
+pathway for the on-device classifier (only a clipped model delta ever
+leaves the device), and sleep-state monitoring with human-reviewed
+physician-facing reporting. **Rule 0 above is unchanged and applies to all
+five** — none of them may create a new path to stimulation. Open items
+OI-6 through OI-10 extend §11 of the master prompt. Read that addendum
+before touching any of: `firmware/*/audio/`, `models/brainprint/`,
+`models/voiceprint/`, `models/federated/`, `models/nlg_rationale/`,
+`models/sleep_staging/`, or their app/cloud counterparts.

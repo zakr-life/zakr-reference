@@ -48,3 +48,55 @@ in this codebase claims device-level safety certification anywhere in
 its documentation strings, comments, or generated reports. See every
 model card, bench-test report, and CI-gates document's explicit
 non-goal section, and `../../STATUS.md`.
+
+---
+
+The items below extend this list per `../ADDENDUM_2_biometric_federated_sleep.md`
+(voiceprint, brainprint, federated learning, bounded-rationale generation,
+sleep-state reporting). Same discipline: implement behind a named,
+easily-changed configuration point and flag with `TODO(OI-n)` rather than
+picking a silent default that looks final.
+
+## OI-6 — Microphone (U21) part/placement not yet mechanically reconciled
+
+The voiceprint feature (Addendum 2 §B) assumes a MEMS PDM microphone
+somewhere on the band; the mechanical carrier drawing does not yet specify
+where. **Where this shows up in code:** the microphone's identity/config is
+a provisioned parameter, matching the OI-1 pattern, not a hardcoded pin/part
+assumption.
+
+## OI-7 — EEG/voice biometric anti-spoofing is not solved by this design
+
+Brainprint (Addendum 2 §A) and voiceprint (§B) are documented as additive,
+never-sole-authority local authentication factors specifically because
+liveness/anti-spoofing for either modality is an open research problem, not
+a solved one. No claim of spoof-resistance appears anywhere in either
+feature's code or model cards. **Where this shows up in code:**
+`firmware/core1_inference_radio/biometric/README.md` and
+`firmware/core1_inference_radio/audio/README.md`.
+
+## OI-8 — Federated-learning differential-privacy budget not finalized
+
+The federated-learning pathway (Addendum 2 §D) clips every local update to a
+bounded norm before it may leave the device; an additional noise
+(differential-privacy) step exists as a mechanism but its epsilon/noise-scale
+parameter is a named constant, not a reviewed privacy guarantee. **Where
+this shows up in code:** `models/federated/clipping.py`.
+
+## OI-9 — Biometric template retention under jurisdictional law not reviewed
+
+Voiceprint and brainprint templates are biometric data. Statutes in some
+jurisdictions (e.g., Illinois BIPA and similar) impose specific notice,
+consent, and retention/destruction requirements. This repository implements
+the technical *capability* for explicit consent gating, defined retention,
+and an on-device-only default — it does not itself constitute a legal
+compliance determination. **Where this shows up in code:**
+`cloud/biometrics/voiceprintTemplateStore.js`.
+
+## OI-10 — Automated real-time physician alerting is out of scope
+
+Sleep-state reporting (Addendum 2 §E) surfaces flagged nights to a
+human-reviewed clinician-portal queue only. Automated real-time alerting
+(push/SMS/pager) is a materially different, higher-regulatory-bar product
+(effectively an alarm system) and is explicitly not designed or built here.
+**Where this shows up in code:** `cloud/clinician-portal/sleepTrend.js`.
