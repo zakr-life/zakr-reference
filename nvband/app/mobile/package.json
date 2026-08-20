@@ -1,0 +1,21 @@
+{
+  "name": "@zakr/nvband-companion",
+  "version": "0.1.0",
+  "private": true,
+  "description": "ZAKR NV-Band companion app (CLAUDE.md §5) — React Native, iOS/Android/caregiver mode.",
+  "scripts": {
+    "test": "node --test ../tests/*.test.js",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "react": "18.2.0",
+    "react-native": "0.74.0",
+    "react-native-ble-plx": "^3.1.2",
+    "@react-navigation/native": "^6.1.0",
+    "@react-navigation/native-stack": "^6.9.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "@types/react": "^18.2.0"
+  }
+}

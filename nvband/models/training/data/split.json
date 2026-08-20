@@ -1,0 +1,32 @@
+{
+  "train": [
+    "SYN-SUBJ-005",
+    "SYN-SUBJ-018",
+    "SYN-SUBJ-022",
+    "SYN-SUBJ-015",
+    "SYN-SUBJ-007",
+    "SYN-SUBJ-014",
+    "SYN-SUBJ-023",
+    "SYN-SUBJ-021",
+    "SYN-SUBJ-006",
+    "SYN-SUBJ-019",
+    "SYN-SUBJ-013",
+    "SYN-SUBJ-016",
+    "SYN-SUBJ-008",
+    "SYN-SUBJ-000",
+    "SYN-SUBJ-009",
+    "SYN-SUBJ-011"
+  ],
+  "val": [
+    "SYN-SUBJ-003",
+    "SYN-SUBJ-017",
+    "SYN-SUBJ-002"
+  ],
+  "test": [
+    "SYN-SUBJ-001",
+    "SYN-SUBJ-020",
+    "SYN-SUBJ-012",
+    "SYN-SUBJ-004",
+    "SYN-SUBJ-010"
+  ]
+}

@@ -1,0 +1,63 @@
+Requirement_ID,CLAUDE.md_Section,Requirement_Summary,Code_Module,Test_File,Status
+TRC-CHG-01,§3.4,Charge-balanced waveform passes validator,core0_safety_signal/safety/charge_balance.c,core0_safety_signal/tests/test_charge_balance.c,PASS
+TRC-CHG-02,§3.4,DC-offset waveform rejected regardless of amplitude,core0_safety_signal/safety/charge_balance.c,core0_safety_signal/tests/test_charge_balance.c,PASS
+TRC-CHG-03,§1,Balanced waveform over current ceiling still rejected,core0_safety_signal/safety/charge_balance.c,core0_safety_signal/tests/test_charge_balance.c,PASS
+TRC-CHG-04,§1,Per-phase charge limit enforced independent of current ceiling,core0_safety_signal/safety/charge_balance.c,core0_safety_signal/tests/test_charge_balance.c,PASS
+TRC-CHG-05,§3.4,Malformed waveform never defaults to safe/transmit,core0_safety_signal/safety/charge_balance.c,core0_safety_signal/tests/test_charge_balance.c,PASS
+TRC-ILK-01,§3.5,All seven conditions satisfied => all_clear,core0_safety_signal/safety/interlock_status.c,core0_safety_signal/tests/test_interlock_status.c,PASS
+TRC-ILK-02,§3.5,Each of seven conditions tripped independently detected,core0_safety_signal/safety/interlock_status.c,core0_safety_signal/tests/test_interlock_status.c,PASS
+TRC-ILK-03,§3.5,Simultaneous multi-fault correctly reported,core0_safety_signal/safety/interlock_status.c,core0_safety_signal/tests/test_interlock_status.c,PASS
+TRC-ILK-04,§3.5,Re-arm refused while any condition unmet,core0_safety_signal/safety/interlock_status.c,core0_safety_signal/tests/test_interlock_status.c,PASS
+TRC-ILK-05,§3.5,Re-arm succeeds only when latched and all conditions clear,core0_safety_signal/safety/interlock_status.c,core0_safety_signal/tests/test_interlock_status.c,PASS
+TRC-ILK-06,§3.5,Re-arm refused when not latched,core0_safety_signal/safety/interlock_status.c,core0_safety_signal/tests/test_interlock_status.c,PASS
+TRC-ILK-07,§0.1,No bypass surface exists in HAL API shape,core0_safety_signal/safety/interlock_status.h,core0_safety_signal/tests/test_interlock_status.c,PASS
+TRC-WDG-01,§3.6,Kick only when sampling has advanced,core0_safety_signal/safety/watchdog_kick.c,core0_safety_signal/tests/test_watchdog_kick.c,PASS
+TRC-WDG-02,§3.6,Sustained kicking independent of other subsystem load,core0_safety_signal/safety/watchdog_kick.c,core0_safety_signal/tests/test_watchdog_kick.c,PASS
+TRC-WDG-03,§3.6,Never kicks on null/invalid state,core0_safety_signal/safety/watchdog_kick.c,core0_safety_signal/tests/test_watchdog_kick.c,PASS
+TRC-UI-01,§3.7,All fault/battery conditions pairwise visually/audibly distinguishable,core0_safety_signal/safety/ui_state.c,core0_safety_signal/tests/test_ui_state.c,PASS
+TRC-CFG-01,§11 OI-1,Channel config data-driven not compile-time constant,shared/nvband_channel_config.c,core0_safety_signal/tests/test_channel_config.c,PASS
+TRC-MUX-01,§3.3,Normal mux switch uses minimum break-before-make interval,core0_safety_signal/drivers/mux_bbm.c,core0_safety_signal/tests/test_mux_bbm.c,PASS
+TRC-MUX-02,§3.3,Rapid error-recovery switching never skips the break,core0_safety_signal/drivers/mux_bbm.c,core0_safety_signal/tests/test_mux_bbm.c,PASS
+TRC-MUX-03,§3.3,Same-channel reselect still breaks,core0_safety_signal/drivers/mux_bbm.c,core0_safety_signal/tests/test_mux_bbm.c,PASS
+TRC-AFE-01,§3.3,Low-noise channel passes self-test,core0_safety_signal/drivers/afe_noise_selftest.c,core0_safety_signal/tests/test_afe_noise_selftest.c,PASS
+TRC-AFE-02,§3.3,High-noise channel fails and blocks session progression,core0_safety_signal/drivers/afe_noise_selftest.c,core0_safety_signal/tests/test_afe_noise_selftest.c,PASS
+TRC-AFE-03,§3.3,Malformed self-test input rejected,core0_safety_signal/drivers/afe_noise_selftest.c,core0_safety_signal/tests/test_afe_noise_selftest.c,PASS
+TRC-CHG-ARB-01,§3.1,USB takes priority when both sources present,core0_safety_signal/drivers/charger_arbitration.c,core0_safety_signal/tests/test_charger_arbitration.c,PASS
+TRC-CHG-ARB-02,§3.1,Never reports both sources simultaneously active,core0_safety_signal/drivers/charger_arbitration.c,core0_safety_signal/tests/test_charger_arbitration.c,PASS
+TRC-CHG-ARB-03,§3.1,Arbitration events logged only on transition,core0_safety_signal/drivers/charger_arbitration.c,core0_safety_signal/tests/test_charger_arbitration.c,PASS
+TRC-PMIC-01,§3.1,AFE reset release gated on all rails settled by readback,core0_safety_signal/drivers/pmic_sequencer.c,core0_safety_signal/tests/test_pmic_sequencer.c,PASS
+TRC-PMIC-02,§3.1,First failing rail halts sequence,core0_safety_signal/drivers/pmic_sequencer.c,core0_safety_signal/tests/test_pmic_sequencer.c,PASS
+TRC-PMIC-03,§3.1,Null/unconfigured readback never assumed settled,core0_safety_signal/drivers/pmic_sequencer.c,core0_safety_signal/tests/test_pmic_sequencer.c,PASS
+TRC-SAMP-01,§3.3,EEG+IMU pushed and popped together from one timestamp,core0_safety_signal/sampling/sync_ring_buffer.c,core0_safety_signal/tests/test_sync_ring_buffer.c,PASS
+TRC-SAMP-02,§3.6,Monotonic sample counter feeds watchdog kick gating,core0_safety_signal/sampling/sync_ring_buffer.c,core0_safety_signal/tests/test_sync_ring_buffer.c,PASS
+TRC-SAMP-03,§3.3,Sampling never blocks on a slow reader (overflow overwrites oldest),core0_safety_signal/sampling/sync_ring_buffer.c,core0_safety_signal/tests/test_sync_ring_buffer.c,PASS
+TRC-IPC-01,§3.6,Push/pop FIFO ordering preserved,shared/nvband_ipc_spsc.c,shared/tests/test_ipc_spsc.c,PASS
+TRC-IPC-02,§3.6,Full queue drops rather than blocks,shared/nvband_ipc_spsc.c,shared/tests/test_ipc_spsc.c,PASS
+TRC-IPC-03,§3.6,High-volume producer/consumer never loses FIFO order,shared/nvband_ipc_spsc.c,shared/tests/test_ipc_spsc.c,PASS
+TRC-CLAMP-01,§4,Model output within bounds passes through unchanged,core1_inference_radio/inference/stim_command_clamp.c,core1_inference_radio/tests/test_stim_command_clamp.c,PASS
+TRC-CLAMP-02,§4,Absurd current request clamped to hard ceiling,core1_inference_radio/inference/stim_command_clamp.c,core1_inference_radio/tests/test_stim_command_clamp.c,PASS
+TRC-CLAMP-03,§4,Absurd duration request clamped,core1_inference_radio/inference/stim_command_clamp.c,core1_inference_radio/tests/test_stim_command_clamp.c,PASS
+TRC-CLAMP-04,§4,Null model output yields zero command not a default,core1_inference_radio/inference/stim_command_clamp.c,core1_inference_radio/tests/test_stim_command_clamp.c,PASS
+TRC-EPOCH-01,§3.6,Epoch within budget marked usable,core1_inference_radio/inference/epoch_budget.c,core1_inference_radio/tests/test_epoch_budget.c,PASS
+TRC-EPOCH-02,§3.6,Epoch overrun dropped not retried/blocked,core1_inference_radio/inference/epoch_budget.c,core1_inference_radio/tests/test_epoch_budget.c,PASS
+TRC-EPOCH-03,§3.6,Repeated overruns keep counting never halt Core1 loop,core1_inference_radio/inference/epoch_budget.c,core1_inference_radio/tests/test_epoch_budget.c,PASS
+TRC-ATT-01,§7,Unauthenticated peer cannot start session/OTA/rearm,core1_inference_radio/ble/attestation.c,core1_inference_radio/tests/test_attestation.c,PASS
+TRC-ATT-02,§5 §7,Unauthenticated/malicious peer can always stop or pause,core1_inference_radio/ble/attestation.c,core1_inference_radio/tests/test_attestation.c,PASS
+TRC-ATT-03,§3.10,Successful challenge/response authenticates,core1_inference_radio/ble/attestation.c,core1_inference_radio/tests/test_attestation.c,PASS
+TRC-ATT-04,§3.10,Failed signature verification stays unauthenticated,core1_inference_radio/ble/attestation.c,core1_inference_radio/tests/test_attestation.c,PASS
+TRC-ATT-05,§7,Replay without outstanding challenge ignored,core1_inference_radio/ble/attestation.c,core1_inference_radio/tests/test_attestation.c,PASS
+TRC-ATT-06,§7,Revoked session cannot start,core1_inference_radio/ble/attestation.c,core1_inference_radio/tests/test_attestation.c,PASS
+TRC-SESS-01,§3.9,Staged-then-committed happy path,core1_inference_radio/session/session_store.c,core1_inference_radio/tests/test_session_store.c,PASS
+TRC-SESS-02,§3.9,Never-written record reads as empty,core1_inference_radio/session/session_store.c,core1_inference_radio/tests/test_session_store.c,PASS
+TRC-SESS-03,§3.9,Torn write detected as corrupt not committed,core1_inference_radio/session/session_store.c,core1_inference_radio/tests/test_session_store.c,PASS
+TRC-SESS-04,§3.9,Forged commit marker without checksum never reports committed,core1_inference_radio/session/session_store.c,core1_inference_radio/tests/test_session_store.c,PASS
+TRC-SESS-05,§3.9,Commit fails cleanly when underlying writes fail,core1_inference_radio/session/session_store.c,core1_inference_radio/tests/test_session_store.c,PASS
+TRC-BOOT-01,§3.8,Initial slot state is confirmed,bootloader/ab_rollback.c,bootloader/tests/test_ab_rollback.c,PASS
+TRC-BOOT-02,§3.8,Successful update confirms and stays on new slot,bootloader/ab_rollback.c,bootloader/tests/test_ab_rollback.c,PASS
+TRC-BOOT-03,§3.8,Repeated boot failure triggers automatic rollback,bootloader/ab_rollback.c,bootloader/tests/test_ab_rollback.c,PASS
+TRC-BOOT-04,§3.8,Confirmed image boot attempts do not count toward rollback,bootloader/ab_rollback.c,bootloader/tests/test_ab_rollback.c,PASS
+TRC-BOOT-05,§3.8,Confirm is a no-op outside pending state,bootloader/ab_rollback.c,bootloader/tests/test_ab_rollback.c,PASS
+TRC-SIM-01,§9,Lifted electrode trips impedance condition only,firmware/sim/resistive_phantom.c + core0 interlock_status.c,firmware/sim/tests/test_end_to_end_scenarios.c,PASS
+TRC-SIM-02,§9,Normal contact reports all-clear end to end,firmware/sim/resistive_phantom.c,firmware/sim/tests/test_end_to_end_scenarios.c,PASS
+TRC-SIM-03,§9,Make-before-break anomaly injector detected and latched,core0_safety_signal/drivers/mux_bbm.c,firmware/sim/tests/test_end_to_end_scenarios.c,PASS
+TRC-SIM-04,§9,Charge-imbalanced waveform rejected independent of interlock state,core0_safety_signal/safety/charge_balance.c,firmware/sim/tests/test_end_to_end_scenarios.c,PASS
