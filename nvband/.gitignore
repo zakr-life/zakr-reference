@@ -1,0 +1,14 @@
+# Build/test artifacts — regenerate via the *_host_tests.sh / test runners.
+firmware/**/tests/bin/
+firmware/**/bin/
+node_modules/
+__pycache__/
+*.pyc
+.DS_Store
+
+# Bench-test reports are per-run, timestamped artifacts, not source.
+tools/bench-test/reports/*.json
+
+# Manufacturing/provisioning registries are runtime state, not source
+# (tests use in-memory or tempdir instances — see tests/).
+models/versioning/registry.json

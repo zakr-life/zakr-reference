@@ -1,0 +1,32 @@
+{
+  "clean_test_accuracy": 0.9423076923076923,
+  "clean_test_n": 520,
+  "confusion_matrix": [
+    [
+      186,
+      0,
+      6
+    ],
+    [
+      0,
+      150,
+      10
+    ],
+    [
+      4,
+      10,
+      154
+    ]
+  ],
+  "labels": [
+    "ENCODING",
+    "RECALL",
+    "NEITHER"
+  ],
+  "artifact_robustness": {
+    "n_contaminated": 80,
+    "accuracy_on_contaminated": 0.575
+  },
+  "subject_leakage_check": "PASS",
+  "data_provenance": "synthetic"
+}
