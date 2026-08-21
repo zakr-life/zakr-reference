@@ -1,0 +1,30 @@
+{
+  "train": [
+    "SYN-SLEEP-SUBJ-005",
+    "SYN-SLEEP-SUBJ-017",
+    "SYN-SLEEP-SUBJ-020",
+    "SYN-SLEEP-SUBJ-015",
+    "SYN-SLEEP-SUBJ-007",
+    "SYN-SLEEP-SUBJ-014",
+    "SYN-SLEEP-SUBJ-021",
+    "SYN-SLEEP-SUBJ-019",
+    "SYN-SLEEP-SUBJ-006",
+    "SYN-SLEEP-SUBJ-018",
+    "SYN-SLEEP-SUBJ-013",
+    "SYN-SLEEP-SUBJ-016",
+    "SYN-SLEEP-SUBJ-008",
+    "SYN-SLEEP-SUBJ-000",
+    "SYN-SLEEP-SUBJ-009"
+  ],
+  "val": [
+    "SYN-SLEEP-SUBJ-011",
+    "SYN-SLEEP-SUBJ-003",
+    "SYN-SLEEP-SUBJ-002"
+  ],
+  "test": [
+    "SYN-SLEEP-SUBJ-001",
+    "SYN-SLEEP-SUBJ-012",
+    "SYN-SLEEP-SUBJ-004",
+    "SYN-SLEEP-SUBJ-010"
+  ]
+}
