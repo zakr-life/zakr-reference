@@ -43,7 +43,7 @@ are synthetic IMU-derived ground truth, not measured artifact.
 
 ## On-device footprint (int8 quantized, symmetric per-tensor)
 - Model size: 0.33 KB (budget: 64.0 KB)
-- Average inference latency: 0.011 ms/epoch
+- Average inference latency: 0.012 ms/epoch
   (budget: 20.0 ms, measured on the export
   workstation's Python quantized-path simulation, NOT on target
   Cortex-M33 hardware — an on-target benchmark is a firmware bring-up
