@@ -22,6 +22,19 @@ echo "== core1_inference_radio host tests =="
 make -C core1_inference_radio/tests clean test
 
 echo
+echo "== core1_inference_radio/biometric host tests (Addendum 2 §A) =="
+make -C core1_inference_radio/biometric/tests clean test
+
+echo
+echo "== core1_inference_radio/audio host tests (Addendum 2 §B) =="
+make -C core1_inference_radio/audio/tests clean test
+
+echo
+echo "== core1_inference_radio/sleep host tests (Addendum 2 §E) =="
+make -C core1_inference_radio/sleep/tests clean test
+python3 core1_inference_radio/sleep/tests/check_no_stim_coupling.py
+
+echo
 echo "== bootloader host tests =="
 make -C bootloader/tests clean test
 
