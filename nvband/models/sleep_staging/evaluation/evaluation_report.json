@@ -1,0 +1,54 @@
+{
+  "clean_test_accuracy": 0.9215686274509803,
+  "clean_test_n": 1326,
+  "confusion_matrix": [
+    [
+      123,
+      1,
+      0,
+      0,
+      1
+    ],
+    [
+      0,
+      127,
+      15,
+      1,
+      18
+    ],
+    [
+      2,
+      1,
+      487,
+      17,
+      9
+    ],
+    [
+      0,
+      0,
+      5,
+      332,
+      0
+    ],
+    [
+      0,
+      8,
+      26,
+      0,
+      153
+    ]
+  ],
+  "labels": [
+    "WAKE",
+    "N1",
+    "N2",
+    "N3",
+    "REM"
+  ],
+  "artifact_robustness": {
+    "n_contaminated": 114,
+    "accuracy_on_contaminated": 0.21929824561403508
+  },
+  "subject_leakage_check": "PASS",
+  "data_provenance": "synthetic"
+}

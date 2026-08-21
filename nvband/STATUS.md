@@ -51,6 +51,66 @@ build pass.
   any required manufacturing record is not a built unit" system
   invariant, key-ceremony one-identity-per-unit enforcement. **10 tests**.
 
+## Addendum 2 (`docs/ADDENDUM_2_biometric_federated_sleep.md`): what's real
+
+Same discipline as above — every number below is from an independently
+re-run test suite or pipeline script, not asserted.
+
+- **Brainprint** (`firmware/core1_inference_radio/biometric/`,
+  `models/brainprint/`, `app/mobile/src/state/brainprintGate.js`):
+  template extraction, 1:1 cosine matching, and an auth-gate decision
+  function whose result type has exactly two values so a permanent
+  lockout cannot be expressed by the API — the no-lockout invariant is
+  tested on both the firmware and app sides independently. **15+11+1004
+  firmware assertions, 12 model-pipeline tests, 5 app tests.** Measured
+  (synthetic data): FRR 0.0%, FAR 4.7% at threshold 0.90 — see
+  `models/brainprint/evaluation_report.json`.
+- **Voiceprint** (`firmware/core1_inference_radio/audio/`,
+  `models/voiceprint/`, `app/.../voiceprintGate.js` +
+  `voiceprintConsent.js`, `cloud/biometrics/`): a mic-power-gate state
+  machine that cannot be powered outside an explicit capture request and
+  auto-powers-off after a bounded window regardless of any stop call;
+  strictly-1:1 verification (no 1:N search function exists); cloud
+  template storage that refuses raw-audio-shaped payloads and requires a
+  separate cloud-backup consent. **104 firmware assertions, 26 model
+  tests, 17 app tests, 13 cloud tests.** Measured: FAR 0.0000, FRR 0.0222
+  (n=30 subjects) — see `models/voiceprint/model_card.md`.
+- **Bounded-rationale generation** (`models/nlg_rationale/`,
+  `cloud/reporting/`): a constrained slot-filling generator bound to
+  validated structured records, plus an independent factuality verifier.
+  **54 model-pipeline tests + 14 cloud tests.** Measured (not asserted) on
+  an actual golden-set run: **0.0000% ungrounded-claim rate** (0/738
+  sentences) against the 0.5% budget — expected given the constrained
+  design, not a claim that general LLM hallucination is solved (see the
+  README's explicit non-claim).
+- **Federated learning** (`models/federated/`, `cloud/federated/`): a
+  local-update algorithm producing a clipped, bounded-norm delta; a
+  cloud aggregator that refuses to run below a 10-device minimum cohort
+  (checked twice — pre-check and defense-in-depth) and rejects
+  out-of-bound-norm/malformed submissions. **21 model tests + 9 cloud
+  tests.** On-device execution of the local-update algorithm is a
+  firmware bring-up task not done in this pass (same category as the
+  TinyML runtime gap below) — the algorithm itself is implemented and
+  tested at the pipeline level, mirroring how the base classifier's own
+  training already works.
+- **Sleep-state monitoring** (`models/sleep_staging/`,
+  `firmware/core1_inference_radio/sleep/`, `app/.../SleepReportScreen.tsx`,
+  `cloud/clinician-portal/sleepTrend.js`): a 5-stage classifier with a
+  structural test proving zero coupling to any stimulation-related
+  identifier or header (both a Python source scan and a firmware grep
+  check); a UI-copy denylist test proving no diagnostic language appears
+  anywhere in the report; a human-reviewed-queue-only clinician flag
+  (no automated alerting). **23 firmware assertions + 25 model tests +
+  10 app tests + 11 cloud tests.** Measured clean accuracy: 92.16%
+  (n=1326), dropping to 21.9% on the motion-contaminated slice (expected,
+  same artifact-robustness discipline as the state classifier).
+
+Run everything: `firmware/run_host_tests.sh` (now includes `biometric/`,
+`audio/`, and `sleep/`), `models/*/tests/` per-directory (or
+`python3 -m unittest discover -s models/<dir>/tests`), `node --test
+app/tests/*.test.js` (61 tests total), `node --test cloud/tests/*.test.js`
+(81 tests total).
+
 ## What's structural scaffolding, not a working implementation
 
 Flagged explicitly in each affected directory's own README, listed here
@@ -87,8 +147,16 @@ for one-stop visibility:
 - **CI YAML** — `firmware/docs/ci_gates.md` specifies exactly what a
   pipeline must check (and why); it isn't wired to a specific CI
   provider since that depends on where ZAKR hosts this repo.
+- **U21 microphone hardware** — not yet fabricated/placed on the band
+  (`TODO(OI-6)`); the voiceprint firmware/models pipeline is built and
+  tested against the same kind of HAL-injected fakes as the rest of this
+  repo's firmware, not real PDM hardware.
+- **On-device federated-learning execution** — `models/federated/`'s
+  local-update algorithm is implemented and tested at the pipeline
+  level; wiring it to actually run on Core 1 after a real session is not
+  done in this pass, same category as the TinyML runtime gap above.
 
-## Open items (CLAUDE.md §11) still live in this codebase
+## Open items (CLAUDE.md §11, extended by Addendum 2) still live in this codebase
 
 - **OI-1** (electrode/channel count): `firmware/shared/nvband_channel_config.h`
   is data-driven, not a compile-time constant, exactly because this is
@@ -97,6 +165,12 @@ for one-stop visibility:
   prompt; nothing in this codebase claims device-level safety
   certification anywhere (see every model card, bench-test report, and
   CI-gates doc's explicit non-goal section).
+- **OI-6** (U21 mic part/placement), **OI-7** (no EEG/voice biometric
+  anti-spoofing claim), **OI-8** (federated-learning DP noise budget not
+  finalized), **OI-9** (biometric template retention under jurisdictional
+  law not legally reviewed), **OI-10** (real-time automated physician
+  alerting explicitly out of scope) — see
+  `docs/open-items/README.md` and `docs/ADDENDUM_2_biometric_federated_sleep.md`.
 
 ## What this status document is not
 

@@ -1,0 +1,12 @@
+{
+  "data_provenance": "synthetic",
+  "threshold": 0.9,
+  "num_subjects": 20,
+  "genuine_trials": 320,
+  "false_rejects": 0,
+  "false_reject_rate": 0.0,
+  "impostor_trials": 320,
+  "false_accepts": 15,
+  "false_accept_rate": 0.0469,
+  "note": "Measured on synthetic data only. Not a claim of real-world biometric performance -- see TODO(OI-7)."
+}

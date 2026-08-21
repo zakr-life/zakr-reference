@@ -10,6 +10,15 @@ first**; every module in this tree traces back to one of its sections.
 structural placeholder in this pass, per the master prompt's own rule
 against unearned claims (§10).
 
+**Then read `docs/ADDENDUM_2_biometric_federated_sleep.md`** — a second,
+equally authoritative specification covering five features added after
+the initial build: EEG-based local authentication ("brainprint"),
+microphone-based 1:1 voice verification ("voiceprint," BOM addition
+U21), constrained bounded-rationale text generation (measured ≤0.5%
+ungrounded-claim rate), federated learning (only a clipped model delta
+ever leaves a device), and sleep-state monitoring with human-reviewed
+clinician reporting. Open items OI-6 through OI-10 extend §11.
+
 ## The one rule
 
 CLAUDE.md §0.1: firmware may veto stimulation; nothing in this

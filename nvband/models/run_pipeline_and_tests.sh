@@ -12,6 +12,14 @@ python3 -m unittest discover -s export/tests -p 'test_*.py' -v
 python3 -m unittest discover -s versioning/tests -p 'test_*.py' -v
 
 echo
+echo "== Addendum 2 unit tests (brainprint / voiceprint / federated / sleep_staging / nlg_rationale) =="
+python3 -m unittest discover -s brainprint/tests -p 'test_*.py' -v
+python3 -m unittest discover -s voiceprint/tests -p 'test_*.py' -v
+python3 -m unittest discover -s federated/tests -p 'test_*.py' -v
+python3 -m unittest discover -s sleep_staging/tests -p 'test_*.py' -v
+python3 -m unittest discover -s nlg_rationale/tests -p 'test_*.py' -v
+
+echo
 echo "== full pipeline: train =="
 (cd training && python3 train_state_classifier.py)
 
