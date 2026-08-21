@@ -51,7 +51,7 @@ for why they should not be read as a real-world performance claim.
 
 ## On-device footprint (int8 quantized, symmetric per-tensor, per enrolled template)
 - Estimated template size: 0.0352 KB (budget: 1.0 KB)
-- Measured average verification latency: 0.0048 ms/comparison
+- Measured average verification latency: 0.0045 ms/comparison
   (budget: 2.0 ms, measured on the export
   workstation's Python quantized-path simulation, NOT on target
   Cortex-M33 hardware — an on-target benchmark is a firmware bring-up
