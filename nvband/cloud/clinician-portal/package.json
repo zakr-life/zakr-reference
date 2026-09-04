@@ -1,0 +1,13 @@
+{
+  "name": "@zakr/nvband-clinician-portal",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Playwright e2e tests for the ZAKR NV-Band clinician portal web UI (CLAUDE.md §6).",
+  "scripts": {
+    "test:e2e": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.0",
+    "@types/node": "^26.4.1"
+  }
+}
